@@ -1,0 +1,15 @@
+C:\Users\Super3\Code\ExpMicrosoft\Sketch and Shake\Sketch and Shake\Bin\Debug\ApplicationIcon.png
+C:\Users\Super3\Code\ExpMicrosoft\Sketch and Shake\Sketch and Shake\Bin\Debug\Background.png
+C:\Users\Super3\Code\ExpMicrosoft\Sketch and Shake\Sketch and Shake\Bin\Debug\Sketch and Shake.dll
+C:\Users\Super3\Code\ExpMicrosoft\Sketch and Shake\Sketch and Shake\Bin\Debug\Sketch and Shake.pdb
+C:\Users\Super3\Code\ExpMicrosoft\Sketch and Shake\Sketch and Shake\Bin\Debug\AppManifest.xaml
+C:\Users\Super3\Code\ExpMicrosoft\Sketch and Shake\Sketch and Shake\Bin\Debug\Sketch_and_Shake.xap
+C:\Users\Super3\Code\ExpMicrosoft\Sketch and Shake\Sketch and Shake\Bin\Debug\Microsoft.Phone.Controls.dll
+C:\Users\Super3\Code\ExpMicrosoft\Sketch and Shake\Sketch and Shake\Bin\Debug\Microsoft.Phone.Controls.xml
+C:\Users\Super3\Code\ExpMicrosoft\Sketch and Shake\Sketch and Shake\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Super3\Code\ExpMicrosoft\Sketch and Shake\Sketch and Shake\obj\Debug\App.g.i.cs
+C:\Users\Super3\Code\ExpMicrosoft\Sketch and Shake\Sketch and Shake\obj\Debug\Sketch and Shake.g.resources
+C:\Users\Super3\Code\ExpMicrosoft\Sketch and Shake\Sketch and Shake\obj\Debug\Sketch and Shake.dll
+C:\Users\Super3\Code\ExpMicrosoft\Sketch and Shake\Sketch and Shake\obj\Debug\Sketch and Shake.pdb
+C:\Users\Super3\Code\ExpMicrosoft\Sketch and Shake\Sketch and Shake\obj\Debug\XapCacheFile.xml
+C:\Users\Super3\Code\ExpMicrosoft\Sketch and Shake\Sketch and Shake\obj\Debug\Main.g.i.cs
