@@ -1,28 +1,20 @@
-﻿// (c) Copyright Microsoft Corporation.
+﻿// Author: Shawn Wilkinson
+// Date: April 13, 2012
+// Website: http://super3.org
+// Note this XAML page was made from a lockable pivot sample. 
+
+// (c) Copyright Microsoft Corporation.
 // This source is subject to the Microsoft Public License (Ms-PL).
 // Please see http://go.microsoft.com/fwlink/?LinkID=131993 for details.
 // All other rights reserved.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
-using Microsoft.Devices.Sensors;
 using ShakeGestures;
-using System.Windows.Media.Imaging;
-using System.IO;
-using System.IO.IsolatedStorage;
-using Microsoft.Phone;
-using System.Windows.Resources;
-using System.Xml.Serialization;
 
 namespace PhoneToolkitSample.Samples
 {
@@ -32,7 +24,7 @@ namespace PhoneToolkitSample.Samples
         private Point currentPoint;
         private Point oldPoint;
 
-        // Private Brush Data
+        // Private Brush Data (Defaults)
         private int brushSize = 15;
         private Color brushColor = Colors.Red;
 
@@ -41,17 +33,19 @@ namespace PhoneToolkitSample.Samples
             // Start Up the Form
             InitializeComponent();
 
-            // Register Shake Event
+            // Register shake event
             ShakeGesturesHelper.Instance.ShakeGesture += new EventHandler<ShakeGestureEventArgs>(Instance_ShakeGesture);
-            // Set Minimum Shakes to Prevent Accidental Clears
+            // Set minimum shakes to prevent accidental clears of the canvas
+            // Testing on the phone showed that 3 shakes was sufficent
             ShakeGesturesHelper.Instance.MinimumRequiredMovesForShake = 3;
-            // Start Shake Detection
+            // Start shake detection
             ShakeGesturesHelper.Instance.Active = true;
         }
 
         private void Instance_ShakeGesture(object sender, ShakeGestureEventArgs e)
         {
-            // Because this is on a diffrent thread or something
+            // Because this is on a diffrent thread (or something), you can't 
+            // call the canvas control directly
             Deployment.Current.Dispatcher.BeginInvoke(() =>
             {
                 // Clear Canvas
@@ -70,16 +64,24 @@ namespace PhoneToolkitSample.Samples
 
         private void drawCanvas_MouseMove(object sender, MouseEventArgs e)
         {
-            // Drawing Code
+            // Drawing code
+            // Nice little tutorial on that is here:
+            // http://www.windowsphonegeek.com/tips/drawing-in-wp7-2-drawing-shapes-with-finger
+
             currentPoint = e.GetPosition(this.drawCanvas);
 
             Line line = new Line() { X1 = currentPoint.X, Y1 = currentPoint.Y, X2 = oldPoint.X, Y2 = oldPoint.Y };
             
+            // Grab current brush settingss
             line.Stroke = new SolidColorBrush(brushColor);
             line.StrokeThickness = brushSize;
+            // Make the ends of the lines round or you will be able to 
+            // see the indiviual lines as they do not merge nicly when 
+            // don't have a nice round ending
             line.StrokeStartLineCap = PenLineCap.Round;
             line.StrokeEndLineCap = PenLineCap.Round;
 
+            // Add the line to the canvas
             this.drawCanvas.Children.Add(line);
             oldPoint = currentPoint;
         }
@@ -103,7 +105,7 @@ namespace PhoneToolkitSample.Samples
             }
             catch
             {
-
+                // Failed. Do Nothing.
             }
         }
 
@@ -159,12 +161,12 @@ namespace PhoneToolkitSample.Samples
         {
             try
             {
-                // Try to Set the Brush to the Slider Value
+                // Try to set the brush to the slider value
                 brushSize = (int)brushSlider.Value;
             }
             catch
             {
-                // Slider is Null Then Just Use Default
+                // Slider is null then just use the defualt
                 brushSize = 15;
             }
             resetSamplePen();       
