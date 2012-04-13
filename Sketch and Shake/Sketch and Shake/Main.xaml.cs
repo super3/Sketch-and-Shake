@@ -9,11 +9,16 @@
 // All other rights reserved.
 
 using System;
+using System.IO;
+using System.IO.IsolatedStorage;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Resources;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using Microsoft.Xna.Framework.Media;
 using ShakeGestures;
 
 namespace PhoneToolkitSample.Samples
@@ -176,6 +181,59 @@ namespace PhoneToolkitSample.Samples
         {
             // Clear Canvas
             drawCanvas.Children.Clear();
+        }
+
+        private void saveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // Article on saving
+            // http://msdn.microsoft.com/en-us/library/ff769549(v=vs.92).aspx
+
+            // Create an incrementing name 
+            int jpegNameCounter = 1;
+            String jpegName = "Sketch" + jpegNameCounter.ToString();
+            jpegNameCounter++;
+
+            // Create isolated storage file and check if it exsists 
+            var myStore = IsolatedStorageFile.GetUserStoreForApplication();
+            if (myStore.FileExists(jpegName))
+            {
+                myStore.DeleteFile(jpegName);
+            }
+
+            // Create isolated storage file steam
+            IsolatedStorageFileStream myFileStream = myStore.CreateFile(jpegName);
+
+            // Create a stream out of the sample JPEG file.
+            // For [Application Name] in the URI, use the project name that you entered 
+            // in the previous steps. Also, TestImage.jpg is an example;
+            // you must enter your JPEG file name if it is different.
+            StreamResourceInfo sri = null;
+            Uri uri = new Uri("Sketch and Shake;component/" + jpegName + ".jpg", UriKind.Relative);
+            sri = Application.GetResourceStream(uri);
+
+            // Get bitmap from canvas
+            WriteableBitmap wb = new WriteableBitmap(drawCanvas, null);
+
+            // Encode the WriteableBitmap object to a JPEG stream.
+            wb.SaveJpeg(myFileStream, wb.PixelWidth, wb.PixelHeight, 0, 85);
+            myFileStream.Close();
+
+            // Create a new stream from isolated storage, and save the JPEG file to the media library on Windows Phone.
+            myFileStream = myStore.OpenFile(jpegName, FileMode.Open, FileAccess.Read);
+
+            // Save the image to the camera roll or saved pictures album.
+            MediaLibrary library = new MediaLibrary();
+
+            //// Save the image to the camera roll album.
+            //Picture pic = library.SavePictureToCameraRoll("SavedPicture.jpg", myFileStream);
+            //MessageBox.Show("Image saved to camera roll album");
+
+            // Save the image to the saved pictures album.
+            Picture pic = library.SavePicture(jpegName + ".jpg", myFileStream);
+            MessageBox.Show("Sketch Saved to Saved Pictures Album");    
+
+            // Clean up
+            myFileStream.Close();
         }
     }
 }
