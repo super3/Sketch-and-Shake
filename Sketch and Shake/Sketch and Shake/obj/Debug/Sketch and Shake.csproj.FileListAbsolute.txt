@@ -21,7 +21,6 @@ C:\Users\Super3\Code\Sketch-and-Shake\Sketch and Shake\Sketch and Shake\Bin\Debu
 C:\Users\Super3\Code\Sketch-and-Shake\Sketch and Shake\Sketch and Shake\Bin\Debug\Sketch_and_Shake.xap
 C:\Users\Super3\Code\Sketch-and-Shake\Sketch and Shake\Sketch and Shake\Bin\Debug\Microsoft.Phone.Controls.dll
 C:\Users\Super3\Code\Sketch-and-Shake\Sketch and Shake\Sketch and Shake\Bin\Debug\Microsoft.Phone.Controls.xml
-C:\Users\Super3\Code\Sketch-and-Shake\Sketch and Shake\Sketch and Shake\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Super3\Code\Sketch-and-Shake\Sketch and Shake\Sketch and Shake\obj\Debug\App.g.i.cs
 C:\Users\Super3\Code\Sketch-and-Shake\Sketch and Shake\Sketch and Shake\obj\Debug\Main.g.i.cs
 C:\Users\Super3\Code\Sketch-and-Shake\Sketch and Shake\Sketch and Shake\obj\Debug\Sketch and Shake.g.resources
@@ -52,3 +51,7 @@ C:\Users\Super3\Code\Sketch-and-Shake\Sketch and Shake\Sketch and Shake\Bin\Debu
 C:\Users\Super3\Code\Sketch-and-Shake\Sketch and Shake\Sketch and Shake\Bin\Debug\sv-SE\Microsoft.Advertising.Mobile.resources.dll
 C:\Users\Super3\Code\Sketch-and-Shake\Sketch and Shake\Sketch and Shake\Bin\Debug\zh-CN\Microsoft.Advertising.Mobile.resources.dll
 C:\Users\Super3\Code\Sketch-and-Shake\Sketch and Shake\Sketch and Shake\Bin\Debug\zh-TW\Microsoft.Advertising.Mobile.resources.dll
+C:\Users\Super3\Code\Sketch-and-Shake\Sketch and Shake\Sketch and Shake\obj\Debug\Sketch and Shake.csprojResolveAssemblyReference.cache
+C:\Users\Super3\Code\Sketch-and-Shake\Sketch and Shake\Sketch and Shake\Bin\Debug\Images\appbar.feature.settings.rest.png
+C:\Users\Super3\Code\Sketch-and-Shake\Sketch and Shake\Sketch and Shake\Bin\Debug\Images\appbar.questionmark.rest.png
+C:\Users\Super3\Code\Sketch-and-Shake\Sketch and Shake\Sketch and Shake\Bin\Debug\Images\appbar.save.rest.png

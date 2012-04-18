@@ -12,13 +12,12 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
-    shell:SystemTray.IsVisible="True">
+    mc:Ignorable="d" shell:SystemTray.IsVisible="True" d:DesignHeight="768" d:DesignWidth="480">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Pivot Control-->
-        <toolkit:LockablePivot Title="Sketch and Shake" Name="pivot" Margin="0,0,0,90" IsLocked="False">
+        <toolkit:LockablePivot Title="Sketch and Shake" Name="pivot" Margin="0,23,0,12" IsLocked="False">
             <controls:PivotItem x:Name="pivotDraw" Header="Draw" Background="Transparent">
             	<Grid>
             		<Canvas x:Name="drawCanvas" Margin="8" Background="White" MouseLeftButtonDown="drawCanvas_MouseLeftButtonDown" MouseMove="drawCanvas_MouseMove" />
@@ -49,9 +48,5 @@
             </controls:PivotItem>
 
         </toolkit:LockablePivot>
-        <Button Content="Lock" Height="72" HorizontalAlignment="Right" Margin="0,688,8,0" Name="lockButton" VerticalAlignment="Top" Width="160" Click="lockButton_Click" RenderTransformOrigin="1.369,0.569" />
-        <TextBlock HorizontalAlignment="Left" Margin="29,0,0,32" TextWrapping="Wrap" VerticalAlignment="Bottom" d:LayoutOverrides="HorizontalAlignment" Name="clearTextBlock" Tap="clearTextBlock_Tap"><Run Text="Shake to "/><Run Text="Clear"/></TextBlock>
-        <Button Content="Save" Height="72" HorizontalAlignment="Left" Margin="165,688,0,0" x:Name="saveBtn" VerticalAlignment="Top" Width="160" RenderTransformOrigin="1.369,0.569" Click="saveBtn_Click" />
-        
     </Grid>
 </phone:PhoneApplicationPage>

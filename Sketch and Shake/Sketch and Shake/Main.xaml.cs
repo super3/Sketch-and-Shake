@@ -19,6 +19,7 @@ using System.Windows.Resources;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Xna.Framework.Media;
+using Microsoft.Phone.Shell;
 using ShakeGestures;
 
 namespace PhoneToolkitSample.Samples
@@ -45,6 +46,31 @@ namespace PhoneToolkitSample.Samples
             ShakeGesturesHelper.Instance.MinimumRequiredMovesForShake = 3;
             // Start shake detection
             ShakeGesturesHelper.Instance.Active = true;
+
+            // Application Bar
+            ApplicationBar = new ApplicationBar();
+            ApplicationBar.Mode = ApplicationBarMode.Minimized;
+
+            // Application Bar Save Button
+            ApplicationBarIconButton saveBtnBar = new ApplicationBarIconButton(new Uri("/Images/appbar.save.rest.png", UriKind.Relative));
+            saveBtnBar.Text = "Save";
+            ApplicationBar.Buttons.Add(saveBtnBar);
+            saveBtnBar.Click += new EventHandler(saveBtnBar_Click);
+
+            // Application Bar Settings Button
+            ApplicationBarIconButton settingBtnBar = new ApplicationBarIconButton(new Uri("/Images/appbar.feature.settings.rest.png", UriKind.Relative));
+            settingBtnBar.Text = "Settings";
+            ApplicationBar.Buttons.Add(settingBtnBar);
+
+            // Application Bar Help Button
+            ApplicationBarIconButton helpBtnBar = new ApplicationBarIconButton(new Uri("/Images/appbar.questionmark.rest.png", UriKind.Relative));
+            helpBtnBar.Text = "Help";
+            ApplicationBar.Buttons.Add(helpBtnBar);
+        }
+
+        void saveBtnBar_Click(object sender, EventArgs e)
+        {
+            saveCanvas();
         }
 
         private void Instance_ShakeGesture(object sender, ShakeGestureEventArgs e)
@@ -58,14 +84,14 @@ namespace PhoneToolkitSample.Samples
             });
         }
 
-        private void lockButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Intresting. This just flips the boolean control property
-            // rather than having a silly if/else statement
-            pivot.IsLocked = !pivot.IsLocked;
-            // Another cool little boolean trick
-            lockButton.Content = (pivot.IsLocked ? "Unlock" : "Lock");
-        }
+        //private void lockButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    // Intresting. This just flips the boolean control property
+        //    // rather than having a silly if/else statement
+        //    pivot.IsLocked = !pivot.IsLocked;
+        //    // Another cool little boolean trick
+        //    lockButton.Content = (pivot.IsLocked ? "Unlock" : "Lock");
+        //}
 
         private void drawCanvas_MouseMove(object sender, MouseEventArgs e)
         {
@@ -183,7 +209,7 @@ namespace PhoneToolkitSample.Samples
             drawCanvas.Children.Clear();
         }
 
-        private void saveBtn_Click(object sender, RoutedEventArgs e)
+        private void saveCanvas()
         {
             // Article on saving
             // http://msdn.microsoft.com/en-us/library/ff769549(v=vs.92).aspx
@@ -230,10 +256,18 @@ namespace PhoneToolkitSample.Samples
 
             // Save the image to the saved pictures album.
             Picture pic = library.SavePicture(jpegName + ".jpg", myFileStream);
-            MessageBox.Show("Sketch Saved to Saved Pictures Album");    
+            MessageBox.Show("Sketch Saved to Saved Pictures Album");
 
             // Clean up
             myFileStream.Close();
+        }
+
+        /// <summary>
+        ///  Application Bar Save Button
+        /// </summary>
+        private void saveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            saveCanvas();
         }
     }
 }
