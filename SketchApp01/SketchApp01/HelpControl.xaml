@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="SketchApp01.HelpControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+    
+    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
+    	<ScrollViewer Margin="8">
+    		<Grid Height="438" Width="456" VerticalAlignment="Top" HorizontalAlignment="Left">
+    			<TextBlock x:Name="aboutBlock" TextWrapping="Wrap" HorizontalAlignment="Left" Width="464" Height="220" VerticalAlignment="Top" Margin="8,0,0,0"><Run Text="Programmers:"/><LineBreak/><Run Text="     Shawn Wilkinson"/><LineBreak/><Run Text="     Eric Baukhages"/><LineBreak/><Run/><LineBreak/><Run Text="Special Thanks:"/><LineBreak/><Run Text="     Mary Fletcher"/><LineBreak/><Run Text="     Experience Microsoft 2012"/><LineBreak/><Run Text="     Project 704 Team"/><LineBreak/><Run/></TextBlock>
+    			<Button x:Name="websiteBtn" Content="Official Website" Margin="8,0,8,8" VerticalAlignment="Bottom"/>
+    			<Button x:Name="SourceBtn" Content="Source Code (Github)" Margin="8,0,8,80" VerticalAlignment="Bottom"/>
+    		</Grid>
+    	</ScrollViewer>
+    </Grid>
+</UserControl>
