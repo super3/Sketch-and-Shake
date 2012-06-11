@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Media;
+using System.IO.IsolatedStorage;
 
 /* This class stores the states of the brushSize and brushColor so that the data
  * can be communicated between the separate windows.
@@ -9,45 +10,72 @@ using System.Windows.Media;
 
 namespace SketchApp01
 {
-    public class DataStorage
+    //got this code from an answer on StackOverflow
+    //found here: http://stackoverflow.com/questions/3145803/windows-phone-7-config-appsettings
+    public class AppSettings
     {
-        private Color brushColor = Colors.Blue;
-        private int brushSize = 15;
-
-        private bool resetSampleBrush = false;
-
-        #region getSets
-
-        public Color getBrushColor()
+        public AppSettings()
         {
-            return brushColor;
+            // TODO: Complete member initialization
         }
+
+        private  IsolatedStorageSettings Settings = System.IO.IsolatedStorage.IsolatedStorageSettings.ApplicationSettings;
 
         public void setBrushColor(Color inputColor)
         {
-            brushColor = inputColor;
-        }
-
-        public int getBrushSize()
-        {
-            return brushSize;
+            StoreSetting<Color>("brushColor", inputColor);
         }
 
         public void setBrushSize(int inputSize)
         {
-            brushSize = inputSize;
+            StoreSetting<int>("brushSize", inputSize);
         }
 
-        public bool getResetSampleBrush()
+        public Color getBrushColor()
         {
-            return resetSampleBrush;
+            Color outputColor;
+
+            TryGetSetting<Color>("brushColor", out outputColor);
+
+            return outputColor;
         }
 
-        public void setResetSampleBrush(bool inputState)
+        public int getBrushSize()
         {
-            resetSampleBrush = inputState;
+            int outputSize;
+
+            TryGetSetting<int>("brushSize", out outputSize);
+
+            return outputSize;
         }
 
-        #endregion
+        //Example StoreSetting function
+        //public static void StoreSetting(string settingName, string value)
+        //{
+        //    StoreSetting<string>(settingName, value);
+        //}
+
+        private void StoreSetting<TValue>(string settingName, TValue value)
+        {
+            if (!Settings.Contains(settingName))
+                Settings.Add(settingName, value);
+            else
+                Settings[settingName] = value;
+
+            // EDIT: if you don't call Save then WP7 will corrupt your memory!
+            Settings.Save();
+        }
+
+        private bool TryGetSetting<TValue>(string settingName, out TValue value)
+        {            
+            if (Settings.Contains(settingName))
+            {
+                value = (TValue)Settings[settingName];
+                return true;
+            }
+
+            value = default(TValue);
+            return false;
+        }
     }
 }

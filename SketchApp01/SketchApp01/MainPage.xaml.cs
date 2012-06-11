@@ -25,16 +25,15 @@ namespace SketchApp01
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        AppSettings settings = new AppSettings();
+        
         // Private Point Data
         private Point currentPoint;
         private Point oldPoint;
 
         // Private Brush Data (Defaults)
-        private int brushSize = 15;
+        private int brushSize = 10;
         private Color brushColor = Colors.Red;
-
-        //NEW: the communication class between the user phone control and the main window
-        DataStorage brushChanges = new DataStorage();
 
         // Constructor
         public MainPage()
@@ -63,8 +62,8 @@ namespace SketchApp01
 //Made changes here!!!!!!!!!!!!!!!
             
             // Grab current brush settings
-            line.Stroke = new SolidColorBrush(brushChanges.getBrushColor());
-            line.StrokeThickness = brushChanges.getBrushSize();
+            line.Stroke = new SolidColorBrush(settings.getBrushColor());
+            line.StrokeThickness = settings.getBrushSize();
             // Make the ends of the lines round or you will be able to 
             // see the indiviual lines as they do not merge nicly when 
             // don't have a nice round ending

@@ -15,60 +15,61 @@ namespace SketchApp01
     public partial class WindowsPhoneControl1 : UserControl
     {
         //This is the class that handles data transfer between the pages
-        DataStorage brushChanges = new DataStorage();
+        AppSettings settings = new AppSettings();
 
         public WindowsPhoneControl1()
         {
             InitializeComponent();
+            brushSlider.Value = settings.getBrushSize();
         }
 
 
         private void btnBlack_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            brushChanges.setBrushColor(Colors.Black);
-            brushChanges.setResetSampleBrush(true);
+            settings.setBrushColor(Colors.Black);
+            resetSampleBrush();
         }
 
         private void btnRed_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            brushChanges.setBrushColor(Colors.Red);
-            brushChanges.setResetSampleBrush(true);
+            settings.setBrushColor(Colors.Red);
+            resetSampleBrush();
         }
 
         private void btnBlue_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            brushChanges.setBrushColor(Colors.Blue);
-            brushChanges.setResetSampleBrush(true);
+            settings.setBrushColor(Colors.Blue);
+            resetSampleBrush();
         }
 
         private void btnGreen_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            brushChanges.setBrushColor(Colors.Green);
-            brushChanges.setResetSampleBrush(true);
+            settings.setBrushColor(Colors.Green);
+            resetSampleBrush();
         }
 
         private void btnWhite_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            brushChanges.setBrushColor(Colors.White);
-            brushChanges.setResetSampleBrush(true);
+            settings.setBrushColor(Colors.White);
+            resetSampleBrush();
         }
 
         private void btnYellow_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            brushChanges.setBrushColor(Colors.Yellow);
-            brushChanges.setResetSampleBrush(true);
+            settings.setBrushColor(Colors.Yellow);
+            resetSampleBrush();
         }
 
         private void btnPurple_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            brushChanges.setBrushColor(Colors.Purple);
-            brushChanges.setResetSampleBrush(true);
+            settings.setBrushColor(Colors.Purple);
+            resetSampleBrush();
         }
 
         private void btnOrange_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            brushChanges.setBrushColor(Colors.Orange);
-            brushChanges.setResetSampleBrush(true);
+            settings.setBrushColor(Colors.Orange);
+            resetSampleBrush();
         }
 
         private void brushSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -76,14 +77,31 @@ namespace SketchApp01
             try
             {
                 // Try to set the brush to the slider value
-                brushChanges.setBrushSize((int)brushSlider.Value);
+                settings.setBrushSize((int)brushSlider.Value);
             }
             catch
             {
                 // Slider is null then just use the defualt
-                brushChanges.setBrushSize( 15 );
+                settings.setBrushSize( 15 );
+            }
+            resetSampleBrush();
+        }
+
+        private void resetSampleBrush()
+        {
+            try
+            {
+                sampleBrush.Fill = new SolidColorBrush(settings.getBrushColor());
+                sampleBrush.Width = settings.getBrushSize();
+                sampleBrush.Height = settings.getBrushSize();
+            }
+            catch
+            {
+                // Failed. Do Nothing.
             }
         }
+
+
 
     }
 }

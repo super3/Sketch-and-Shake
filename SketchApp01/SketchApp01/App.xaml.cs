@@ -56,13 +56,15 @@ namespace SketchApp01
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
-
         }
 
         // Code to execute when the application is launching (eg, from Start)
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            AppSettings settings = new AppSettings();
+            settings.setBrushColor(Colors.Red);
+            settings.setBrushSize(10);
         }
 
         // Code to execute when the application is activated (brought to foreground)
