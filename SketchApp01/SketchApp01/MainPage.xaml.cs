@@ -1,25 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+using System.IO;
+using System.IO.IsolatedStorage;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
+using System.Windows.Resources;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
+using Microsoft.Xna.Framework.Media;
+using ShakeGestures;
 
-
-/* I basically just moved the draw code over from the previous version
- * but i made some major changes in the settings window (which i lazily left as
- * "WindowsPhoneControl1" hahaha.
- * 
- * but seriously, this should work.
- * -Eric
- */
 
 namespace SketchApp01
 {
@@ -32,7 +23,7 @@ namespace SketchApp01
         private Point oldPoint;
 
         // Private Brush Data (Defaults)
-        private int brushSize = 10;
+        private int brushSize = 10; // Is this used?
         private Color brushColor = Colors.Red;
 
         // Constructor
@@ -40,13 +31,24 @@ namespace SketchApp01
         {
             InitializeComponent();
 
-            ApplicationBar = new ApplicationBar();
-            ApplicationBar.Mode = ApplicationBarMode.Minimized;
+            // Register shake event
+            ShakeGesturesHelper.Instance.ShakeGesture += new EventHandler<ShakeGestureEventArgs>(Instance_ShakeGesture);
+            // Set minimum shakes to prevent accidental clears of the canvas
+            // Testing on the phone showed that 3 shakes was sufficent
+            ShakeGesturesHelper.Instance.MinimumRequiredMovesForShake = 3;
+            // Start shake detection
+            ShakeGesturesHelper.Instance.Active = true;
+        }
 
-            ApplicationBarIconButton appBarBtnSettings = new ApplicationBarIconButton(new Uri("/Images/appbar.feature.settings.rest.png", UriKind.Relative));
-            appBarBtnSettings.Text = "Settings";
-            ApplicationBar.Buttons.Add(appBarBtnSettings);
-            appBarBtnSettings.Click += new EventHandler(appBarBtnSettings_Click);
+        private void Instance_ShakeGesture(object sender, ShakeGestureEventArgs e)
+        {
+            // Because this is on a diffrent thread (or something), you can't 
+            // call the canvas control directly
+            Deployment.Current.Dispatcher.BeginInvoke(() =>
+            {
+                // Clear Canvas
+                drawCanvas.Children.Clear();
+            });
         }
 
         private void drawCanvas_MouseMove(object sender, MouseEventArgs e)
@@ -55,15 +57,15 @@ namespace SketchApp01
             // Nice little tutorial on that is here:
             // http://www.windowsphonegeek.com/tips/drawing-in-wp7-2-drawing-shapes-with-finger
 
+            // Get current point location
             currentPoint = e.GetPosition(this.drawCanvas);
-
+            // Create a line
             Line line = new Line() { X1 = currentPoint.X, Y1 = currentPoint.Y, X2 = oldPoint.X, Y2 = oldPoint.Y };
-
-//Made changes here!!!!!!!!!!!!!!!
             
             // Grab current brush settings
             line.Stroke = new SolidColorBrush(settings.getBrushColor());
             line.StrokeThickness = settings.getBrushSize();
+
             // Make the ends of the lines round or you will be able to 
             // see the indiviual lines as they do not merge nicly when 
             // don't have a nice round ending
@@ -75,16 +77,81 @@ namespace SketchApp01
             oldPoint = currentPoint;
         }
 
+        // Grab the the current pointer location. So we know where to draw the line later
         private void drawCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // Drawing Code
             currentPoint = e.GetPosition(drawCanvas);
             oldPoint = currentPoint;
         }
 
-        private void appBarBtnSettings_Click(object sender, EventArgs e)
+		// Launch the user control that contains all the settings for the current brush.
+        private void barSettings_Click(object sender, System.EventArgs e)
         {
-            NavigationService.Navigate(new Uri("/WindowsPhoneControl1.xaml", UriKind.Relative));
+        	NavigationService.Navigate(new Uri("/BrushControl.xaml", UriKind.Relative));
         }
+
+        private void barHelp_Click(object sender, System.EventArgs e)
+        {
+        	NavigationService.Navigate(new Uri("/HelpControl.xaml", UriKind.Relative));
+        }
+
+        private void saveCanvas()
+        {
+            // Article on saving
+            // http://msdn.microsoft.com/en-us/library/ff769549(v=vs.92).aspx
+
+            // Create an incrementing name 
+            int jpegNameCounter = 1;
+            String jpegName = "Sketch" + jpegNameCounter.ToString();
+            jpegNameCounter++;
+
+            // Create isolated storage file and check if it exsists 
+            var myStore = IsolatedStorageFile.GetUserStoreForApplication();
+            if (myStore.FileExists(jpegName))
+            {
+                myStore.DeleteFile(jpegName);
+            }
+
+            // Create isolated storage file steam
+            IsolatedStorageFileStream myFileStream = myStore.CreateFile(jpegName);
+
+            // Create a stream out of the sample JPEG file.
+            // For [Application Name] in the URI, use the project name that you entered 
+            // in the previous steps. Also, TestImage.jpg is an example;
+            // you must enter your JPEG file name if it is different.
+            StreamResourceInfo sri = null;
+            Uri uri = new Uri("Sketch and Shake;component/" + jpegName + ".jpg", UriKind.Relative);
+            sri = Application.GetResourceStream(uri);
+
+            // Get bitmap from canvas
+            WriteableBitmap wb = new WriteableBitmap(drawCanvas, null);
+
+            // Encode the WriteableBitmap object to a JPEG stream.
+            wb.SaveJpeg(myFileStream, wb.PixelWidth, wb.PixelHeight, 0, 85);
+            myFileStream.Close();
+
+            // Create a new stream from isolated storage, and save the JPEG file to the media library on Windows Phone.
+            myFileStream = myStore.OpenFile(jpegName, FileMode.Open, FileAccess.Read);
+
+            // Save the image to the camera roll or saved pictures album.
+            MediaLibrary library = new MediaLibrary();
+
+            //// Save the image to the camera roll album.
+            //Picture pic = library.SavePictureToCameraRoll("SavedPicture.jpg", myFileStream);
+            //MessageBox.Show("Image saved to camera roll album");
+
+            // Save the image to the saved pictures album.
+            Picture pic = library.SavePicture(jpegName + ".jpg", myFileStream);
+            MessageBox.Show("Sketch Saved to Saved Pictures Album");
+
+            // Clean up
+            myFileStream.Close();
+        }
+
+        private void barSave_Click(object sender, System.EventArgs e)
+        {
+        	saveCanvas();
+        }
+
     }
 }
