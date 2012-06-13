@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{cfa8df9b-ef45-46cc-a0f5-4a97f55ad330}" Title="SketchApp01" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal"  Author="SketchApp01 author" Description="Sample description" Publisher="SketchApp01">
+  <App xmlns="" ProductID="{2c2adc2b-7416-44e8-87e0-847601e802ee}" Title="Sketch and Shake" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal"  Author="Shawn Wilkinson" Description="Draw with Your Finger and Shake to Erase." Publisher="Super3">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES"/>
@@ -23,11 +23,11 @@
       <DefaultTask  Name ="_default" NavigationPage="MainPage.xaml"/>
     </Tasks>
     <Tokens>
-      <PrimaryToken TokenID="SketchApp01Token" TaskName="_default">
+      <PrimaryToken TokenID="Sketch_and_ShakeToken" TaskName="_default">
         <TemplateType5>
           <BackgroundImageURI IsRelative="true" IsResource="false">Background.png</BackgroundImageURI>
           <Count>0</Count>
-          <Title>SketchApp01</Title>
+          <Title></Title>
         </TemplateType5>
       </PrimaryToken>
     </Tokens>
