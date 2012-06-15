@@ -11,10 +11,11 @@
     
     <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
     	<ScrollViewer Margin="8">
-    		<Grid Height="438" Width="456" VerticalAlignment="Top" HorizontalAlignment="Left">
-    			<TextBlock x:Name="aboutBlock" TextWrapping="Wrap" HorizontalAlignment="Left" Width="464" Height="220" VerticalAlignment="Top" Margin="8,0,0,0"><Run Text="Programmers:"/><LineBreak/><Run Text="     Shawn Wilkinson"/><LineBreak/><Run Text="     Eric Baukhages"/><LineBreak/><Run/><LineBreak/><Run Text="Special Thanks:"/><LineBreak/><Run Text="     Mary Fletcher"/><LineBreak/><Run Text="     Experience Microsoft 2012"/><LineBreak/><Run Text="     Project 704 Team"/><LineBreak/><Run/></TextBlock>
-    			<Button x:Name="websiteBtn" Content="Official Website" Margin="8,0,8,8" VerticalAlignment="Bottom"/>
-    			<Button x:Name="SourceBtn" Content="Source Code (Github)" Margin="8,0,8,80" VerticalAlignment="Bottom"/>
+    		<Grid Height="456" Width="456" VerticalAlignment="Top" HorizontalAlignment="Left">
+    			<TextBlock x:Name="aboutBlock" TextWrapping="Wrap" HorizontalAlignment="Left" Width="464" Margin="8,0,0,157"><Run Text="Draw with your finger, and when you want to clear the screen just give your phone a shake."/><LineBreak/><Run/><LineBreak/><Run Text="Programmers:"/><LineBreak/><Run Text="     Shawn Wilkinson"/><LineBreak/><Run Text="     Eric Baukhages"/><LineBreak/><Run/><LineBreak/><Run Text="Special Thanks:"/><LineBreak/><Run Text="     Mary Fletcher"/><LineBreak/><Run Text="     Experience Microsoft 2012"/><LineBreak/><Run Text="     Project 704 Team"/><LineBreak/><Run/></TextBlock>
+    			<TextBlock Height="35" Margin="60,0,66,8" TextWrapping="Wrap" Text="Click your back arrow below to return" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
+    			<HyperlinkButton x:Name="sourceBtn" Content="Source Code (Github)" HorizontalAlignment="Center" Margin="8,0,0,112" VerticalAlignment="Bottom" Background="Transparent" NavigateUri="https://github.com/super3/Sketch-and-Shake" TargetName="_blank"/>
+    			<HyperlinkButton x:Name="websiteBtn" Content="Official Website" HorizontalAlignment="Center" Margin="8,0,0,70" VerticalAlignment="Bottom" Background="Transparent" NavigateUri="http://super3.org/sketch-and-shake" TargetName="_blank"/>
     		</Grid>
     	</ScrollViewer>
     </Grid>
