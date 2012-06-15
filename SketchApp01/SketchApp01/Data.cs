@@ -34,14 +34,18 @@ namespace SketchApp01
         public Color getBrushColor()
         {
             Color outputColor;
+
             TryGetSetting<Color>("brushColor", out outputColor);
+
             return outputColor;
         }
 
         public int getBrushSize()
         {
             int outputSize;
+
             TryGetSetting<int>("brushSize", out outputSize);
+
             return outputSize;
         }
 
