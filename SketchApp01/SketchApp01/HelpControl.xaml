@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="SketchApp01.HelpControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+    
+    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
+    	<ScrollViewer Margin="8">
+    		<Grid Height="456" Width="456" VerticalAlignment="Top" HorizontalAlignment="Left">
+    			<TextBlock x:Name="aboutBlock" TextWrapping="Wrap" HorizontalAlignment="Left" Width="464" Margin="8,0,0,157"><Run Text="Draw with your finger, and when you want to clear the screen just give your phone a shake."/><LineBreak/><Run/><LineBreak/><Run Text="Programmers:"/><LineBreak/><Run Text="     Shawn Wilkinson"/><LineBreak/><Run Text="     Eric Baukhages"/><LineBreak/><Run/><LineBreak/><Run Text="Special Thanks:"/><LineBreak/><Run Text="     Mary Fletcher"/><LineBreak/><Run Text="     Experience Microsoft 2012"/><LineBreak/><Run Text="     Project 704 Team"/><LineBreak/><Run/></TextBlock>
+    			<TextBlock Height="35" Margin="60,0,66,8" TextWrapping="Wrap" Text="Click your back arrow below to return" VerticalAlignment="Bottom" d:LayoutOverrides="Width"/>
+    			<HyperlinkButton x:Name="sourceBtn" Content="Source Code (Github)" HorizontalAlignment="Center" Margin="8,0,0,112" VerticalAlignment="Bottom" Background="Transparent" NavigateUri="https://github.com/super3/Sketch-and-Shake" TargetName="_blank"/>
+    			<HyperlinkButton x:Name="websiteBtn" Content="Official Website" HorizontalAlignment="Center" Margin="8,0,0,70" VerticalAlignment="Bottom" Background="Transparent" NavigateUri="http://super3.org/sketch-and-shake" TargetName="_blank"/>
+    		</Grid>
+    	</ScrollViewer>
+    </Grid>
+</UserControl>
