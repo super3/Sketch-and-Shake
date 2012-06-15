@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="SketchApp01.WindowsPhoneControl1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="2" TextAlignment="Center" Text="Click your back arrow below to return" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+        <TextBlock Grid.Row="0" TextAlignment="Center">SETTINGS</TextBlock>
+
+        <Grid Grid.Row="0">
+            <TextBlock HorizontalAlignment="Left" Margin="8,8,0,0" TextWrapping="Wrap" Text="Brush Size:" VerticalAlignment="Top"/>
+            <Slider x:Name="brushSlider" Margin="8,39,8,0" VerticalAlignment="Top" Height="85" Maximum="30" Minimum="1" SmallChange="1" ValueChanged="brushSlider_ValueChanged" />
+            <TextBlock HorizontalAlignment="Left" Margin="8,124,0,0" TextWrapping="Wrap" Text="Brush Colors:" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment"/>
+            <Rectangle x:Name="btnBlack" HorizontalAlignment="Left" Height="100" Margin="8,155,0,0" Stroke="White" VerticalAlignment="Top" Width="100" StrokeThickness="8" Fill="Black" d:LayoutOverrides="VerticalAlignment" Tap="btnBlack_Tap" />
+            <Rectangle x:Name="btnRed" HorizontalAlignment="Left" Height="100" Margin="121,155,0,0" Stroke="White" VerticalAlignment="Top" Width="100" StrokeThickness="8" Fill="Red" d:LayoutOverrides="VerticalAlignment" Tap="btnRed_Tap" />
+            <Rectangle x:Name="btnBlue" Height="100" Margin="0,155,121,0" Stroke="White" VerticalAlignment="Top" StrokeThickness="8" Fill="Blue" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Right" Width="100" Tap="btnBlue_Tap" />
+            <Rectangle x:Name="btnGreen" HorizontalAlignment="Right" Height="100" Margin="0,155,8,0" Stroke="White" VerticalAlignment="Top" Width="100" StrokeThickness="8" Fill="Lime" d:LayoutOverrides="VerticalAlignment" Tap="btnGreen_Tap" />
+            <Rectangle x:Name="btnWhite" HorizontalAlignment="Left" Height="100" Margin="8,268,0,0" Stroke="White" VerticalAlignment="Top" Width="100" StrokeThickness="8" Fill="White" Tap="btnWhite_Tap" />
+            <Rectangle x:Name="btnYellow" HorizontalAlignment="Left" Height="100" Margin="121,268,0,0" Stroke="White" VerticalAlignment="Top" Width="100" StrokeThickness="8" Fill="Yellow" Tap="btnYellow_Tap" />
+            <Rectangle x:Name="btnPurple" Height="100" Margin="0,268,121,0" Stroke="White" VerticalAlignment="Top" StrokeThickness="8" Fill="#FFC200C2" HorizontalAlignment="Right" Width="100" Tap="btnPurple_Tap" />
+            <Rectangle x:Name="btnOrange" HorizontalAlignment="Right" Height="100" Margin="0,268,8,0" Stroke="White" VerticalAlignment="Top" Width="100" StrokeThickness="8" Fill="#FFFF9800" Tap="btnOrange_Tap" />
+            <Ellipse x:Name="sampleBrush" Height="15" HorizontalAlignment="Center" Margin="0,420,0,0" Stroke="{x:Null}" StrokeThickness="1" VerticalAlignment="Top" Width="15" Fill="Red" DataContext="{Binding}" RenderTransformOrigin="-6.8,-1.533" />
+        </Grid>
+
+    </Grid>
+</UserControl>
