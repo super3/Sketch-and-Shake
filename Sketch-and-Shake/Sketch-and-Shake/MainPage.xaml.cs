@@ -11,7 +11,6 @@ using Microsoft.Phone.Controls;
 using Microsoft.Xna.Framework.Media;
 using ShakeGestures;
 
-
 namespace SketchApp01
 {
     public partial class MainPage : PhoneApplicationPage
@@ -90,6 +89,7 @@ namespace SketchApp01
         	NavigationService.Navigate(new Uri("/BrushControl.xaml", UriKind.Relative));
         }
 
+        // Launch a static user control that displays help and about
         private void barHelp_Click(object sender, System.EventArgs e)
         {
         	NavigationService.Navigate(new Uri("/HelpControl.xaml", UriKind.Relative));
@@ -148,6 +148,7 @@ namespace SketchApp01
             myFileStream.Close();
         }
 
+        // Save image currently on canvas
         private void barSave_Click(object sender, System.EventArgs e)
         {
         	saveCanvas();
