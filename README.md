@@ -5,13 +5,13 @@ It is essentially and etch-a-sketch app. You draw with your finger and shake you
 
 Developers
 -------
-Shawn Wilkinson (http://super3.org)
-Eric Baukhages
+* Shawn Wilkinson (http://super3.org)
+* Eric Baukhages
 
 Special Thanks
 -------
-Mary Fletcher
-Experience Microsoft 2012
+* Mary Fletcher
+* Experience Microsoft 2012
 
 Features
 -------
