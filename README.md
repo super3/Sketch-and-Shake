@@ -1,7 +1,7 @@
 Sketch and Shake
 =============
 This is my first app for Windows 7 Phone, designed during Experience Microsoft 2012.
-It is essentially and etch-a-sketch app. You draw with your finger and shake your phone to erase.
+It is essentially a etch-a-sketch app. You draw with your finger and shake your phone to erase.
 
 Developers
 -------
