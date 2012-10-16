@@ -28,7 +28,6 @@ C:\Users\Super3\Code\Sketch-and-Shake\Sketch-and-Shake\Sketch-and-Shake\Bin\Debu
 C:\Users\Super3\Code\Sketch-and-Shake\Sketch-and-Shake\Sketch-and-Shake\Bin\Debug\AppManifest.xaml
 C:\Users\Super3\Code\Sketch-and-Shake\Sketch-and-Shake\Sketch-and-Shake\Bin\Debug\SketchApp01.xap
 C:\Users\Super3\Code\Sketch-and-Shake\Sketch-and-Shake\Sketch-and-Shake\Bin\Debug\ShakeGestures.dll
-C:\Users\Super3\Code\Sketch-and-Shake\Sketch-and-Shake\Sketch-and-Shake\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Super3\Code\Sketch-and-Shake\Sketch-and-Shake\Sketch-and-Shake\obj\Debug\App.g.i.cs
 C:\Users\Super3\Code\Sketch-and-Shake\Sketch-and-Shake\Sketch-and-Shake\obj\Debug\HelpControl.g.i.cs
 C:\Users\Super3\Code\Sketch-and-Shake\Sketch-and-Shake\Sketch-and-Shake\obj\Debug\MainPage.g.i.cs
@@ -37,3 +36,4 @@ C:\Users\Super3\Code\Sketch-and-Shake\Sketch-and-Shake\Sketch-and-Shake\obj\Debu
 C:\Users\Super3\Code\Sketch-and-Shake\Sketch-and-Shake\Sketch-and-Shake\obj\Debug\SketchApp01.dll
 C:\Users\Super3\Code\Sketch-and-Shake\Sketch-and-Shake\Sketch-and-Shake\obj\Debug\SketchApp01.pdb
 C:\Users\Super3\Code\Sketch-and-Shake\Sketch-and-Shake\Sketch-and-Shake\obj\Debug\XapCacheFile.xml
+C:\Users\Super3\Code\Sketch-and-Shake\Sketch-and-Shake\Sketch-and-Shake\obj\Debug\Sketch-and-Shake.csprojResolveAssemblyReference.cache
